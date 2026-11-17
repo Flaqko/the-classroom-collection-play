@@ -139,7 +139,7 @@
 }
 :is(.sequel-page, .classroom-three) [data-resume-menu]:is(:hover, :focus-visible) .resume-act { opacity: 1; }
 
-.sequel-page #stage.sequel-opening [data-symbol="219"] { visibility: hidden; }
+
 
 /* Let the menu's circle extend past the portrait playfield on widescreen displays. */
 .classroom-layout:has(.sequel-title:not([hidden])) {
@@ -337,4 +337,16 @@
 /* The credits' solid backdrop sits behind the scrolling text. */
 .classroom-three .classroom-layout:has(#stage[data-frame="174"]) {
   background: #192d32;
+}
+
+.sequel-page .classroom-side-fades { clip-path: none; }
+.sequel-page #stage :is(
+  [data-symbol="219"], [data-symbol="347"], [data-symbol="348"],
+  [data-symbol="350"], [data-symbol="351"]
+) {
+  visibility: hidden;
+}
+
+.sequel-page .classroom-layout:has(#stage.sequel-chapter-backdrop) {
+  background: #000;
 }

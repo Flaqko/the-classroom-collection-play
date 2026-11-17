@@ -40,6 +40,12 @@ async function loadGame() {
   const [metadata, artwork] = await Promise.all([fetchAsset('game.json'), fetchAsset('library.svg')]);
   const data = await metadata.json();
   data.scenes[title] = [];
+  for (const records of Object.values(data.scenes)) {
+    // Chapter cards have an opaque background beneath the lettering and front fade.
+    if (records.length > 1 && records[0].id === 219 && records[0].depth === 1) {
+      records[0].name = 'chapterBackdrop';
+    }
+  }
   data.sceneSounds = data.sceneSounds.filter(event => event.id !== 'credits');
   // Place the pickup indicator past the right edge of the classroom.
   const pickupNotifier = data.scenes[6835].find(record => record.name === 'notifier');
@@ -88,7 +94,8 @@ async function loadGame() {
   renderer.defs.append(stallClip);
   await setupRemaster(renderer.defs, 'sequel');
   const syncSideFades = setupSideFades(stage, [219, 347, 348, 350, 351], use =>
-    !(stage.classList.contains('sequel-opening') && use.parentElement.dataset.symbol === '219')
+    use.parentElement.dataset.symbol !== '219' ||
+    (!stage.classList.contains('sequel-opening') && use.parentElement.dataset.name !== 'chapterBackdrop')
   );
   const stops = new Set(data.stops);
   const soundStops = new Set(data.soundStops);
@@ -222,7 +229,9 @@ async function loadGame() {
     sendMelanie.hidden = !pendingDistraction();
     placeProgressBar();
     stage.dataset.frame = frame;
-    const bathroom = data.scenes[frame].some(record => record.id === 277);
+    const scene = data.scenes[frame];
+    stage.classList.toggle('sequel-chapter-backdrop', scene[0]?.name === 'chapterBackdrop');
+    const bathroom = scene.some(record => record.id === 277);
     const stallMask = renderer.root.children.get(42);
     if (stallMask?.id === 664) {
       stallMask.node.setAttribute('visibility', 'hidden');
