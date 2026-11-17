@@ -58,7 +58,7 @@ body:has(> :is(.classroom-layout, .collection-frame)) {
   text-shadow: 0 1px 3px #000;
 }
 
-#vertical-cheat-bar {
+:is(#vertical-cheat-bar, #classroom-notifiers) {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -79,8 +79,8 @@ body:is([data-screen="play"], [data-screen="intro"]) #stage {
 body:is([data-screen="title"], [data-screen="instructions"], [data-screen="password"]) .classroom-layout { overflow: clip; }
 body:is([data-screen="title"], [data-screen="instructions"], [data-screen="password"]) .classroom-layout :is(#game-wrap, #stage) { overflow: visible; }
 
-.classroom-layout #game-wrap:has(#vertical-cheat-bar:not([hidden])),
-#vertical-cheat-bar {
+.classroom-layout #game-wrap:has(:is(#vertical-cheat-bar, #classroom-notifiers):not([hidden])),
+:is(#vertical-cheat-bar, #classroom-notifiers) {
   overflow: visible;
 }
 

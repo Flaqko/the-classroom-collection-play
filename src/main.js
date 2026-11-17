@@ -74,14 +74,19 @@ function setScreen(next){
   notePencil.append(pencil.node);
   fitNotePencil();
  }
- if(copyingRoom){
-  for(const [name, x] of [['safe_notifier', -22], ['cheat_notifier', 322]]){
+ if (copyingRoom || next === 'intro') {
+  for (const [name, x] of [['safe_notifier', -32], ['cheat_notifier', 322]]) {
    const indicator = renderer.find(name);
    if(!indicator) continue;
    const [a, b, c, d, , y] = indicator.matrix;
    indicator.node.setAttribute('transform', `matrix(${a} ${b} ${c} ${d} ${x} ${y})`);
    notifiers.append(indicator.node);
   }
+ }
+ notifiers.toggleAttribute('hidden', !notifiers.childElementCount);
+ if (level?.day === 10) {
+  const doorwayScene = renderer.find('teacher_level10') ?? renderer.find('teacher_level10slo_mo');
+  doorwayScene?.node.setAttribute('data-clip-to-playfield', '');
  }
  document.body.dataset.screen=next;
  document.body.dataset.day=level?.day||'';
