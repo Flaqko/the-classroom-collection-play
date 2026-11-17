@@ -5,7 +5,7 @@ import {createFrameCounter} from './frame-counter.js';
 import {setupSceneEdges} from './scene-edges.js';
 import {populatePasswords, resetPasswordSelection} from './password-list.js?v=password-select';
 import {setupPauseMenu} from './pause-menu.js';
-import {setupAutosave} from './autosave.js';
+import {checkpointLabel, setupAutosave} from './autosave.js?v=continue-day';
 import {setupRemaster} from './remaster.js';
 import {createGame,stepGame,detectionFrames} from './model.js';
 import {Renderer} from './renderer.js';
@@ -29,6 +29,7 @@ const speechArtwork = [
 ];
 const syncSceneEdges = setupSceneEdges(stage, [159], speechArtwork);
 const passwordList = document.querySelector('#password-list');
+const resumeNote = document.querySelector('#classic-resume-note');
 const passwordField = passwordList.querySelector('input');
 const collectionBack = "collection-back";
 const menuContinue = "menu-continue";
@@ -162,7 +163,7 @@ function show(f){
    circle?.setFrame(circleFrame);
   }
  }
- if(f===252){setScreen('title');status.textContent='Original game by Luksy.';if (!keepTitleMusic) audio.playLoop(108, .12, 16.15);}
+ if(f===252){setScreen('title');stage.querySelector('[data-symbol=menu-continue]')?.setAttribute('aria-describedby', resumeNote.id);status.textContent='Original game by Luksy.';if (!keepTitleMusic) audio.playLoop(108, .12, 16.15);}
  else if(instructionPage){setScreen('instructions');status.textContent=`Original instructions · page ${f-252} of 11 · Copying starts automatically near the geek.`;}
  else if(f===264){
   setScreen('password');
@@ -303,7 +304,8 @@ async function boot(){try{
  const titleRecords = data.scenes[data.opening.title];
  const menuRows = [121, menuContinue, 126, 130, 135, collectionBack];
  let hadSave;
- function updateTitleOptions(hasSave) {
+ function updateTitleOptions(hasSave, checkpoint) {
+  resumeNote.textContent = hasSave ? checkpointLabel('classic', checkpoint) : '';
   if (hadSave === hasSave) return;
   hadSave = hasSave;
   data.scenes[data.opening.title] = hasSave
@@ -316,7 +318,10 @@ async function boot(){try{
       })
       .sort((a,b)=>a.depth-b.depth)
    : titleRecords;
-  if (screen === 'title') renderer.gotoScene(data.opening.title);
+  if (screen === 'title') {
+   renderer.gotoScene(data.opening.title);
+   stage.querySelector('[data-symbol=menu-continue]')?.setAttribute('aria-describedby', resumeNote.id);
+  }
  }
  pauseMenu = setupPauseMenu({
   stage, audio, clearInput,

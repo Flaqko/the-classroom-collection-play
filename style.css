@@ -94,3 +94,42 @@
   outline: 2px solid #191200;
   outline-offset: -2px;
 }
+
+#classic-resume-note {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: 45.5%;
+  left: 67%;
+  transform: translateY(-50%);
+  padding: 1.4cqw 2cqw;
+  border: .5cqw solid #171717;
+  border-radius: 3cqw;
+  background: #fff0b3;
+  color: #171717;
+  font: italic 800 2.5cqw/1.1 Arial, sans-serif;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+body[data-screen="title"] #game-wrap:has([data-symbol="menu-continue"]:is(:hover, :focus)) #classic-resume-note {
+  display: block;
+}
+
+@media (hover: none) {
+  body[data-screen="title"] #classic-resume-note:not(:empty) { display: block; }
+}
+
+#classic-resume-note::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -.85cqw;
+  width: 1.3cqw;
+  height: 1.3cqw;
+  transform: translateY(-50%) rotate(45deg);
+  border-left: .5cqw solid #171717;
+  border-bottom: .5cqw solid #171717;
+  background: #fff0b3;
+}

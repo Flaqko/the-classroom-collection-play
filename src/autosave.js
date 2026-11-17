@@ -36,7 +36,7 @@ export function setupAutosave(game, resume, onAvailability) {
       if (tooltip) tooltip.textContent = checkpoint === null ? '' : checkpointLabel(game, checkpoint);
       else menuButton.title = label;
     }
-    onAvailability?.(checkpoint !== null);
+    onAvailability?.(checkpoint !== null, checkpoint);
   }
 
   function continueGame() {
