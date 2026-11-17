@@ -1,4 +1,4 @@
-import {setupGamepad, advanceWithSpace} from './gamepad.js?v=controller-highlight';
+import {setupGamepad, advanceWithSpace, focusNextControl} from './gamepad.js?v=next-focus';
 import {createMovementInput} from './movement-input.js';
 import {setupSideFades} from './side-fades.js';
 import {setupCreditsSkip} from './credits-skip.js';
@@ -172,10 +172,7 @@ async function loadGame() {
     if (usesTitleMusic && !keepTitleMusic) audio.playLoop(2, .22, 10.02);
     if (frame === 254) {
       resetPasswordSelection(passwordPanel);
-    } else if (frame >= 255 && frame <= 259 && stage.closest('[data-gamepad-navigation]')) {
-      const next = stage.querySelector('[aria-label=Next]') ?? stage.querySelector('[aria-label="Back to title"]');
-      (next ?? stage).focus({preventScroll: true});
-    } else stage.focus({preventScroll: true});
+    } else focusNextControl(stage, frame >= 255 && frame <= 264 ? 'Back to title' : undefined);
   }
 
   function moveTimeline(target, play = true) {

@@ -107,3 +107,11 @@ export function advanceWithSpace(stage) {
     key: ' ', code: 'Space', bubbles: true, cancelable: true,
   }));
 }
+
+export function focusNextControl(stage, endLabel) {
+  const controllerActive = stage.closest('[data-gamepad-navigation]');
+  const controls = controllerActive ? [...stage.querySelectorAll('[role="button"][aria-label]')] : [];
+  const next = controls.find(control => control.getAttribute('aria-label') === 'Next')
+    ?? controls.find(control => control.getAttribute('aria-label') === endLabel);
+  (next ?? stage).focus({preventScroll: true});
+}

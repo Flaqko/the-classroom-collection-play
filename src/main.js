@@ -1,4 +1,4 @@
-import {setupGamepad, advanceWithSpace} from './gamepad.js?v=controller-highlight';
+import {setupGamepad, advanceWithSpace, focusNextControl} from './gamepad.js?v=next-focus';
 import {createMovementInput} from './movement-input.js';
 import {setupCreditsSkip} from './credits-skip.js';
 import {createFrameCounter} from './frame-counter.js';
@@ -180,7 +180,7 @@ function show(f){
  }else if(f===307){setScreen('ending');status.textContent='The original ending.';}
  else if(f===data.ending.credits) showCredits();
  syncSceneEdges();
- accumulator=0;if(f!==264)stage.focus({preventScroll:true});sounds();
+ accumulator=0;if(f!==264)focusNextControl(stage, instructionPage ? 'Back to menu' : undefined);sounds();
 }
 function submitPassword(){const target=levelForPassword(data.levels,passwordField.value);if(target)show(target.note);else status.textContent='Select a password first.';}
 setupCreditsSkip(stage, () => screen === 'credits', () => show(data.opening.title));
