@@ -1,0 +1,84 @@
+:root {
+  font-family: Arial, sans-serif;
+  background: #171a1e;
+  color: #18130a;
+}
+body { margin: 0; }
+.collection-frame { background: #f90; }
+.collection {
+  box-sizing: border-box;
+  width: var(--game-width);
+  aspect-ratio: 3 / 4;
+  container-type: inline-size;
+  display: grid;
+  align-content: center;
+  margin: 0 auto;
+  padding: 0;
+  background: #f90;
+  border-radius: 20px;
+  text-align: center;
+}
+.collection h1 { margin: 0; font-size: 6cqw; }
+.collection-logo { display: block; width: 76%; margin: 5cqw auto; }
+.game-list {
+  display: grid;
+  gap: 2cqw;
+  width: 85%;
+  margin-inline: auto;
+}
+.game-list a {
+  display: block;
+  padding: 3.4cqw;
+  border: 4px solid #f60;
+  border-radius: 16px;
+  background: #fc0;
+  color: #18130a;
+  font-weight: 900;
+  font-size: 5cqw;
+  text-decoration: none;
+}
+.game-list a:hover, .game-list a:focus-visible { background: #ffe16d; }
+.game-list small { display: block; margin-top: 4px; font-size: 13px; font-weight: 500; }
+.player-page {
+  color: #f5eee2;
+  text-align: center;
+  padding: 12px;
+}
+.player-page h1 { font-size: 20px; margin: 12px 0; }
+.player-page a { color: #ffcf86; }
+.sequel-page #password-list ol { column-gap: 1.5cqw; }
+.sequel-page #password-list li { font-size: 3.2cqw; }
+
+.classroom-three #game-wrap { background: #171717; }
+.classroom-three #stage [data-name="moreGames"],
+.classroom-three #stage [data-name="getHelp"] { display: none; }
+.classroom-three #stage [data-name="mcTeacherHitPoint"],
+.classroom-three #stage [data-name="place"],
+.classroom-three #stage [data-name="hitPoint"],
+.classroom-three #stage [data-name="triggerMan"],
+.classroom-three #stage [data-name="trigger1"],
+.classroom-three #stage [data-name="trigger2"],
+.classroom-three #stage [data-name="trigger3"],
+.classroom-three #stage [data-name="hall"],
+.classroom-three #stage [data-name="shadows"] { visibility: hidden; }
+.classroom-three #password-list li { font-size: 3.3cqw; }
+#third-status { min-height: 1em; font-size: 13px; }
+
+.classroom-three #stage [data-name="minicam"] use[href="#asset361"] { visibility: hidden; }
+
+.classroom-three #stage :is([data-symbol="162"], [data-symbol="171"], [data-name="continueButton"]) {
+  display: none;
+}
+.classroom-three #stage[data-frame="71"] .source-button { visibility: hidden; }
+
+.classroom-three #stage.hall-impact {
+  filter: grayscale(1);
+}
+/* The source flicker lightens only the old portrait playfield. */
+.classroom-three #stage [data-symbol="260"] { display: none; }
+
+/* The hallway backdrop includes neutral fills inside shared gradients. */
+.classroom-three #stage:is([data-frame="49"], [data-frame="62"], [data-frame="71"]) [data-symbol="196"],
+.classroom-three .classroom-layout:has(#stage:is([data-frame="49"], [data-frame="62"], [data-frame="71"])) .classroom-three-room-edge use {
+  filter: sepia(.38) hue-rotate(135deg) saturate(1.65);
+}

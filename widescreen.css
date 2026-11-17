@@ -1,0 +1,170 @@
+body:has(> :is(.classroom-layout, .collection-frame)) {
+  display: grid;
+  min-height: 100dvh;
+  place-items: center;
+  margin: 0;
+}
+
+:is(.classroom-layout, .collection-frame) {
+  --frame-width: min(100vw, calc(100dvh * 16 / 9));
+  --frame-height: calc(var(--frame-width) * 9 / 16);
+  --game-width: calc(var(--frame-height) * 3 / 4);
+  width: var(--frame-width);
+  height: var(--frame-height);
+  overflow: clip;
+}
+
+.classroom-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  justify-items: center;
+  background: linear-gradient(var(--title-top, #f90) 32%, var(--title-bottom, #f90) 68%);
+}
+
+.classroom-layout #game-wrap {
+  width: var(--game-width);
+  min-width: 0;
+  box-shadow: none;
+}
+
+.classroom-layout #pause-game {
+  position: absolute;
+  z-index: 1;
+  right: .6rem;
+  top: .6rem;
+  padding: .35em .6em;
+  font-size: clamp(11px, calc(var(--game-width) * .025), 16px);
+}
+
+.game-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+#game-wrap:has(#password-list:not([hidden])) p.game-status:not(:empty) {
+  inset: auto 5% 2%;
+  width: auto;
+  height: auto;
+  clip-path: none;
+  white-space: normal;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(11px, 3cqw, 16px);
+  text-shadow: 0 1px 3px #000;
+}
+
+#vertical-cheat-bar {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+
+/* The original classroom artwork leaves its floor transparent. */
+body:is([data-screen="play"], [data-screen="intro"]) .classroom-layout,
+.sequel-page .classroom-layout:has(#stage.sequel-classroom) {
+  background: linear-gradient(to right, #266d88 50%, #3497bc 50%);
+}
+body:is([data-screen="play"], [data-screen="intro"]) #stage {
+  background: linear-gradient(#197393, #145876);
+}
+
+body:is([data-screen="title"], [data-screen="instructions"], [data-screen="password"]) .classroom-layout { overflow: clip; }
+body:is([data-screen="title"], [data-screen="instructions"], [data-screen="password"]) .classroom-layout :is(#game-wrap, #stage) { overflow: visible; }
+
+.classroom-layout #game-wrap:has(#vertical-cheat-bar:not([hidden])),
+#vertical-cheat-bar {
+  overflow: visible;
+}
+
+/* The note artwork uses 1-unit rules spaced about 15.9 units apart on a 300-unit sheet. */
+body[data-screen="day"] .classroom-layout {
+  --rule-spacing: calc(var(--game-width) * 15.9 / 300);
+  --rule-weight: calc(var(--game-width) / 300);
+  --first-rule: calc(var(--game-width) * 11.45 / 300);
+  background: repeating-linear-gradient(
+    to bottom,
+    #33ffff 0 var(--rule-weight),
+    #fff var(--rule-weight) var(--rule-spacing)
+  ) 0 var(--first-rule) / 100% var(--rule-spacing) repeat-y;
+}
+
+body[data-screen="day"] .classroom-layout { overflow: clip; }
+body[data-screen="day"] .classroom-layout #game-wrap { overflow: visible; }
+
+#note-pencil {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.classroom-layout {
+  position: relative;
+}
+
+.scene-edges {
+  --left-edge: calc(50% - var(--game-width) / 2);
+  --right-edge: calc(50% + var(--game-width) / 2);
+  position: absolute;
+  inset: 0 0 auto;
+  width: 100%;
+  height: calc(var(--game-width) * 4 / 3);
+  pointer-events: none;
+  clip-path: polygon(evenodd,
+    0 0, 100% 0, 100% 100%, 0 100%, 0 0,
+    var(--left-edge) 0, var(--left-edge) 100%, var(--right-edge) 100%,
+    var(--right-edge) 0, var(--left-edge) 0);
+}
+
+.scene-edges > svg {
+  x: var(--left-edge);
+  width: var(--game-width);
+  height: 100%;
+  overflow: visible;
+}
+
+.classroom-layout:has(#stage.hall-impact) .scene-edges {
+  filter: grayscale(1);
+}
+
+
+/* Interpolate visual transforms between source frames without changing game clocks. */
+.classroom-layout { --motion-frame: calc(1000ms / 30); }
+.classroom-three .classroom-layout { --motion-frame: calc(1000ms / 35); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .classroom-layout [data-interpolate-motion] {
+    transition: transform var(--motion-frame) linear;
+  }
+}
+
+
+.frame-counter {
+  position: absolute;
+  z-index: 3;
+  top: .6rem;
+  left: .6rem;
+  padding: .45rem .65rem;
+  border-radius: .3rem;
+  background: #12181eee;
+  color: #f4f8fc;
+  font: 600 clamp(10px, calc(var(--game-width) * .016), 13px)/1.45 ui-monospace, monospace;
+  white-space: pre;
+  text-align: left;
+  pointer-events: none;
+}
+
+[data-gamepad-navigation] :is(button, a[href], [role="button"]):focus {
+  outline: 2px solid #fff;
+  outline-offset: -2px;
+}

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 150 200">
+  <title>Classroom dialogue snapshot</title>
+  <defs>
+    <g id="desk">
+      <path d="M0 0h28v14H0z" fill="#966300" stroke="#291900" stroke-width="1.15"/>
+      <path d="M1.4 1.4h25.2" stroke="#bb820d" stroke-width=".65"/>
+    </g>
+    <g id="seat">
+      <ellipse cy="4" rx="7.1" ry="3.7" fill="#9c6208" stroke="#6b3b03" stroke-width=".85"/>
+      <path d="M-5 4q5 2.2 10 0" fill="none" stroke="#724403" stroke-width=".65"/>
+    </g>
+    <g id="student">
+      <use href="#seat"/>
+      <path d="m-2.2-9.8 4.8.2-.2 6.4-4.5-.2z" fill="#fffef4" stroke="#aaa494" stroke-width=".48"/>
+      <path d="M-1.4-8.6h2.9m-2.9 1.4h2.6" stroke="#c6c1b2" stroke-width=".35"/>
+      <circle r="4.35" fill="currentColor" stroke="#395007" stroke-width=".65"/>
+    </g>
+    <g id="pair">
+      <use href="#desk"/>
+      <use href="#student" x="7.5" y="19"/>
+      <use href="#student" x="23.8" y="19.6"/>
+    </g>
+    <g id="window">
+      <path d="M0 0 7 2v16l-7 3Z" fill="#69c5eb" stroke="#174e68" stroke-width=".8"/>
+      <path d="M3.5 1v18.6M0 10.5l7-.5" stroke="#2d8ab2" stroke-width=".65"/>
+    </g>
+  </defs>
+  <path fill="#ff9900" d="M0 0h150v200H0z"/>
+  <g fill="#287794" stroke="#16566f" stroke-width=".65">
+    <path d="M0 0h150l-5 7H9z"/>
+    <path d="M0 0 9 7v185L0 200z" fill="#246681"/>
+    <path d="m150 0-5 7v185l5 8z" fill="#3494b1"/>
+    <path d="m0 200 9-8h136l5 8z" fill="#3090ad"/>
+  </g>
+  <use href="#window" y="60"/>
+  <use href="#window" y="150"/>
+  <path d="m53 1 90 0-6 7H59Z" fill="#689800" stroke="#263000" stroke-width="1"/>
+  <path d="m145 25 5-4v16l-5-4Z" fill="#794309" stroke="#4b2b08" stroke-width=".8"/>
+  <ellipse cx="31.6" cy="11.5" rx="7.4" ry="3.2" transform="rotate(20 31.6 11.5)" fill="#9c6208" stroke="#643a05" stroke-width=".8"/>
+  <use href="#desk" x="15.5" y="17"/>
+  <path d="m23 19 6 1 6-.8v8.6l-6 .7-6-.9Z" fill="#e5e0d1" stroke="#aaa18b" stroke-width=".65"/>
+  <path d="M29 20v8m-4.6-6.6 2.6.3m-2.6 1.4 2.8.3m3.1-1.8 2.7-.3m-2.7 1.9 2.6-.3" fill="none" stroke="#8c867b" stroke-width=".45"/>
+  <g color="#379600">
+    <use href="#pair" x="15.5" y="43"/><use href="#pair" x="59" y="43"/><use href="#pair" x="106.5" y="43.2"/>
+    <use href="#pair" x="15.5" y="73.3"/><use href="#pair" x="59.1" y="73.2"/><use href="#pair" x="106.5" y="73.2"/>
+    <use href="#desk" x="15.5" y="104.3"/><use href="#student" x="22.3" y="121.6"/><use href="#seat" x="36.6" y="119.5"/>
+    <use href="#pair" x="59.1" y="104.3"/>
+    <use href="#desk" x="106.5" y="104.3"/><use href="#student" x="113.7" y="121.2" color="#c5d000"/><use href="#student" x="130.4" y="121.4"/>
+    <use href="#pair" x="15.5" y="133"/><use href="#pair" x="59.1" y="133"/><use href="#pair" x="106.5" y="133"/>
+    <use href="#pair" x="15.5" y="162"/><use href="#pair" x="59.1" y="162"/>
+    <use href="#desk" x="106.5" y="162"/><use href="#student" x="113.4" y="182.3" color="#6961fa"/><use href="#seat" x="128.5" y="177.3"/>
+  </g>
+  <path d="m70.5 118.7 4.7.7 5.5-3 3.7 1.4 4.2-2.1 2.5 1.1-.8 1.7 3.6 1-2 1.2-5.2-.4-3.1 3.7-5-2.5-6.2.1z" fill="#438200" stroke="#1b3e08" stroke-width=".65"/>
+  <path d="M79.7 122q2.1-2 4.4.1l-.7 1.2h-3z" fill="#b70000" stroke="#212900" stroke-width=".5"/>
+  <circle cx="12.8" cy="161.4" r="5.8" fill="#cb0000" stroke="#790000" stroke-width=".85"/>
+  <g transform="translate(118 13)">
+    <circle r="8.6" fill="#a3c517" stroke="#759106" stroke-width=".8"/>
+    <path d="M-4.6 1.5h2l1.4-2.5.4-4.4q1.5-1 2.2.6l.1 3.8 2.2.4-.8 5.5H-2l-2.6-.7z" fill="#e8e6a8" stroke="#637428" stroke-width=".65" stroke-linejoin="round"/>
+    <path d="M-2.1 1.6h3m-3 .9H.5m-2.6.9H.4" stroke="#637428" stroke-width=".4"/>
+  </g>
+  <path d="M141 44h7.2v145H141z" fill="#9d6b16" fill-opacity=".25" stroke="#604015" stroke-opacity=".65" stroke-width=".6"/>
+  <path d="M141.6 185.4h6v3.2h-6z" fill="#cc310b" fill-opacity=".8"/>
+  <text x="144.8" y="112" transform="rotate(-90 144.8 112)" text-anchor="middle" fill="#51330c" font-family="Arial, sans-serif" font-size="4.3" font-weight="bold" letter-spacing=".45">CHEAT BAR</text>
+  <g fill="#fff" stroke="#7b776a" stroke-width=".75">
+    <ellipse cx="99.7" cy="102.3" rx="20.7" ry="11.1"/>
+    <ellipse cx="34.6" cy="143.3" rx="20.7" ry="11.1"/>
+  </g>
+  <g fill="#171717" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="6.4">
+    <text x="100" y="101.3" textLength="28.5" lengthAdjust="spacingAndGlyphs">I can't</text>
+    <text x="100" y="106.5" textLength="23.8" lengthAdjust="spacingAndGlyphs">do it!</text>
+    <text x="34.6" y="145.6" textLength="37" lengthAdjust="spacingAndGlyphs">Sit down!</text>
+  </g>
+</svg>

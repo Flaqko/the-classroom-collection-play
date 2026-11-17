@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 300 400">
+  <defs>
+    <g id="desk">
+      <path d="M1 1 35 2 34 34 2 33Z" fill="#643602" stroke="#170d00" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="m11 22 10-2 3 13-12 2z" fill="#fffdf4" stroke="#1b170f" stroke-width="1.1" stroke-linejoin="round"/>
+      <path d="m14 25 5-1m-4 4 5-1" stroke="#9e9589" stroke-width=".6" stroke-linecap="round"/>
+      <circle cx="17" cy="39" r="8.2" fill="#6599ff" stroke="#141925" stroke-width="1.2"/>
+    </g>
+  </defs>
+  <path fill="#656600" d="M0 0h300v400H0z"/>
+  <path d="m32 44 79 1-1 31-75 0z" fill="#643501" stroke="#160d00" stroke-width="2.2" stroke-linejoin="round"/>
+  <g>
+    <use href="#desk" transform="translate(40 126) rotate(1)"/>
+    <use href="#desk" transform="translate(103 129) rotate(-1)"/>
+    <use href="#desk" transform="translate(167 130)"/>
+    <use href="#desk" transform="translate(231 130) rotate(1)"/>
+    <use href="#desk" transform="translate(40 181) rotate(1)"/>
+    <use href="#desk" transform="translate(104 183)"/>
+    <use href="#desk" transform="translate(167 184) rotate(1)"/>
+    <use href="#desk" transform="translate(231 184)"/>
+    <use href="#desk" transform="translate(42 233)"/>
+    <use href="#desk" transform="translate(104 237) rotate(-1)"/>
+    <use href="#desk" transform="translate(168 238)"/>
+    <use href="#desk" transform="translate(232 239)"/>
+    <use href="#desk" transform="translate(42 285) rotate(1)"/>
+    <use href="#desk" transform="translate(106 287) rotate(1)"/>
+    <use href="#desk" transform="translate(168 289) rotate(-1)"/>
+    <use href="#desk" transform="translate(232 290) rotate(1)"/>
+    <use href="#desk" transform="translate(42 337)"/>
+    <use href="#desk" transform="translate(106 339)"/>
+    <use href="#desk" transform="translate(169 341)"/>
+    <use href="#desk" transform="translate(232 342)"/>
+  </g>
+  <path d="m155 115 145 33v110l-12 5z" fill="#69cc00" fill-opacity=".5" stroke="#3b5000" stroke-width="1.2" stroke-linejoin="round"/>
+  <circle cx="155" cy="115" r="10.5" fill="#930400" stroke="#210900" stroke-width="1.6"/>
+</svg>

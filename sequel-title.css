@@ -1,0 +1,303 @@
+.sequel-title {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background: #f90;
+}
+.sequel-title::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -43% 20% 64% -52%;
+  border-radius: 50%;
+  border: 3cqw solid #ff8d00;
+  background: #ffae00;
+}
+.sequel-title-logo {
+  position: absolute;
+  top: 0;
+  left: 11%;
+  width: 78%;
+}
+.sequel-title-options {
+  position: absolute;
+  inset: 30% 20% 11%;
+  display: grid;
+  grid-template-rows: repeat(var(--menu-rows, 6), minmax(0, 1fr));
+  padding: 2.5cqw;
+  border: 1.6cqw solid #f60;
+  border-radius: 8cqw;
+  background: #fc0;
+}
+.sequel-title-options button {
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 1cqw;
+  background: transparent;
+}
+.sequel-title-options svg { width: 100%; height: 84%; filter: brightness(0); }
+.sequel-title-options button:hover svg,
+.sequel-title-options button:focus-visible svg {
+  filter: brightness(0) saturate(100%) invert(39%) sepia(93%) saturate(2747%) hue-rotate(356deg);
+}
+.sequel-title-options button:focus-visible { outline: 2px solid #512700; outline-offset: -2px; }
+.sequel-title-options [data-route="124"] svg { height: 70%; }
+
+.classroom-three .sequel-title-options [data-action="tutorial_button"] svg { height: 63%; }
+.classroom-three .sequel-title-options svg { max-height: 10.5cqw; }
+
+
+.sequel-title-options:has([data-resume-menu]:not([hidden])) { grid-template-rows: repeat(7, minmax(0, 1fr)); }
+#third-play-options:has([data-resume-menu]:not([hidden])) { grid-template-rows: repeat(6, minmax(0, 1fr)); }
+
+.classroom-three {
+  --title-top: #5e8187;
+  --title-bottom: #4c696e;
+  --title-panel: #3a575e;
+  --title-panel-border: #29444a;
+  --title-hover: #4a686f;
+  --title-focus: #c8e5e7;
+  --title-input: #f0f7f8;
+  --title-action: #b3d6da;
+  --title-action-hover: #d0e8eb;
+}
+.sequel-page {
+  --title-top: #43614d;
+  --title-bottom: #243d31;
+  --title-orb: #54735a;
+  --title-orb-border: #4a6850;
+  --title-panel: #263e33;
+  --title-panel-border: #172c23;
+  --title-hover: #3d5947;
+  --title-focus: #d8e9c4;
+  --title-input: #f1f6e9;
+  --title-action: #bdd6a8;
+  --title-action-hover: #d8e9c4;
+}
+
+.sequel-page #game-wrap,
+.classroom-three #game-wrap:has(#stage:not([data-frame])) {
+  background: transparent;
+}
+
+:is(.sequel-page, .classroom-three) .sequel-title {
+  background: linear-gradient(var(--title-top) 32%, var(--title-bottom) 68%);
+}
+.sequel-page .sequel-title::before {
+  background: var(--title-orb);
+  border-color: var(--title-orb-border);
+}
+:is(.sequel-page, .classroom-three) :is(.sequel-title-options, #password-list) {
+  background: var(--title-panel);
+  border-color: var(--title-panel-border);
+  color: #fff;
+}
+:is(.sequel-page, .classroom-three) .sequel-title-options svg,
+:is(.sequel-page, .classroom-three) .sequel-title-options button:is(:hover, :focus-visible) svg {
+  filter: brightness(0) invert(1);
+}
+:is(.sequel-page, .classroom-three) .sequel-title-options button:is(:hover, :focus-visible) {
+  background: var(--title-hover);
+}
+:is(.sequel-page, .classroom-three) .sequel-title-options button:focus-visible { outline-color: var(--title-focus); }
+:is(.sequel-page, .classroom-three) #password-list input { background: var(--title-input); }
+:is(.sequel-page, .classroom-three) #password-list button:not(.password-choice) { background: var(--title-action); }
+:is(.sequel-page, .classroom-three) #password-list button:not(.password-choice):hover { background: var(--title-action-hover); }
+
+:is(.sequel-page, .classroom-three) [data-resume-menu] { position: relative; }
+:is(.sequel-page, .classroom-three) .resume-act {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 84%;
+  transform: translateY(-50%);
+  padding: 1.4cqw 2cqw;
+  border: .5cqw solid #171717;
+  border-radius: 3cqw;
+  background: #fff0b3;
+  color: #171717;
+  font: italic 800 2.5cqw/1.1 Arial, sans-serif;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+}
+:is(.sequel-page, .classroom-three) .resume-act::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -.85cqw;
+  width: 1.3cqw;
+  height: 1.3cqw;
+  transform: translateY(-50%) rotate(45deg);
+  border-left: .5cqw solid #171717;
+  border-bottom: .5cqw solid #171717;
+  background: #fff0b3;
+}
+:is(.sequel-page, .classroom-three) [data-resume-menu]:is(:hover, :focus-visible) .resume-act { opacity: 1; }
+
+.sequel-page #stage.sequel-opening [data-symbol="219"] { visibility: hidden; }
+
+/* Let the menu's circle extend past the portrait playfield on widescreen displays. */
+.classroom-layout:has(.sequel-title:not([hidden])) {
+  position: relative;
+  overflow: clip;
+}
+.sequel-page .classroom-layout:has(.sequel-title:not([hidden]))::before {
+  content: "";
+  position: absolute;
+  top: calc(-.573333 * var(--game-width));
+  left: calc(50% - 1.02 * var(--game-width));
+  width: calc(1.32 * var(--game-width));
+  height: calc(1.053333 * var(--game-width));
+  border: calc(.03 * var(--game-width)) solid var(--title-orb-border);
+  border-radius: 50%;
+  background: var(--title-orb);
+  pointer-events: none;
+}
+.classroom-layout:has(.sequel-title:not([hidden])) #game-wrap,
+.classroom-layout .sequel-title:not([hidden]) {
+  background: transparent;
+}
+.classroom-layout .sequel-title:not([hidden])::before { content: none; }
+
+.classroom-three #game-wrap:has(#stage :is([data-symbol="1"], [data-symbol="455"])) {
+  background: transparent;
+}
+
+:is(.sequel-page, .classroom-three) .pause-menu {
+  background: var(--title-panel);
+  border-color: var(--title-panel-border);
+  color: #fff;
+}
+:is(.sequel-page, .classroom-three) .pause-menu button:is(:hover, :focus-visible) {
+  background: var(--title-hover);
+  outline-color: var(--title-focus);
+}
+
+
+.classroom-three .classroom-layout {
+  position: relative;
+}
+.classroom-side-fades {
+  --left-edge: calc(50% - var(--game-width) / 2);
+  --right-edge: calc(50% + var(--game-width) / 2);
+  position: absolute;
+  inset: 0 0 auto;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  --playfield-bottom: calc(var(--game-width) * 4 / 3);
+  clip-path: polygon(evenodd,
+    0 0, 100% 0, 100% 100%, 0 100%, 0 0,
+    var(--left-edge) 0, var(--left-edge) var(--playfield-bottom),
+    var(--right-edge) var(--playfield-bottom), var(--right-edge) 0, var(--left-edge) 0);
+}
+
+.classroom-three-room-edge {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: calc((100% - var(--game-width)) / 2);
+  width: var(--game-width);
+  height: calc(var(--game-width) * 4 / 3);
+  overflow: visible;
+  pointer-events: none;
+}
+.classroom-three .classroom-layout:has(#stage #classroom-three-room-edge-art) {
+  background: #333;
+}
+.classroom-three .classroom-layout:has(#stage #classroom-three-room-edge-art) .classroom-three-room-edge {
+  display: block;
+}
+.classroom-three .classroom-layout:has(#stage.hall-impact) .classroom-three-room-edge {
+  filter: grayscale(1);
+}
+.room-edge-left {
+  clip-path: inset(0 calc(100% - 1px) 0 -100vw);
+}
+.room-edge-right {
+  clip-path: inset(0 -100vw 0 calc(100% - 1px));
+}
+.room-edge-wall {
+  left: 0;
+  width: calc((100% - var(--game-width)) / 2);
+  overflow: hidden;
+  clip-path: none;
+}
+
+.room-edge-right.room-edge-wall { left: auto; right: 0; }
+
+#send-melanie {
+  position: absolute;
+  left: .6rem;
+  bottom: 3%;
+  max-width: calc((var(--frame-width) - var(--game-width)) / 2 - 1.2rem);
+  padding: .5em .8em;
+  border-color: #172c23;
+  background: var(--title-panel);
+  font-size: clamp(12px, calc(var(--game-width) * .032), 18px);
+
+}
+
+#send-melanie:is(:hover, :focus-visible) {
+  background: var(--title-hover);
+}
+
+#send-melanie kbd {
+  padding: .1em .3em;
+  border: 1px solid currentColor;
+  border-radius: .2em;
+  font-size: .8em;
+}
+
+.sequel-page .classroom-layout:has(#stage.sequel-flashback) {
+  /* Align the road and curb with the outdoor artwork's 300-unit viewBox. */
+  --road-start: calc(50% + var(--game-width) * 23.25 / 300);
+  --curb: calc(50% + var(--game-width) * 156.9 / 300);
+  background: linear-gradient(90deg,
+    #76a44b var(--road-start),
+    #858d90 var(--road-start) var(--curb),
+    #c3c6bc var(--curb) calc(var(--curb) + var(--game-width) * .055),
+    #76a44b calc(var(--curb) + var(--game-width) * .055));
+}
+
+.sequel-page .classroom-layout:has(#stage.sequel-flashback-blackout) {
+  background: #000;
+}
+
+/* The original bitmap already contains the cropped outdoor scene. */
+.sequel-page #stage.sequel-flashback [data-symbol="562"] {
+  visibility: hidden;
+}
+
+.sequel-page .classroom-layout:has(#stage.sequel-flashback)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #76856c22;
+  pointer-events: none;
+}
+
+/* Keep the amber floor beneath the original blue walls and animated fades. */
+.sequel-page #stage.sequel-classroom-flashback {
+  background: #e9a72e;
+}
+
+.sequel-page #stage.sequel-classroom-flashback [data-symbol="552"] {
+  visibility: hidden;
+}
+
+.sequel-page .classroom-layout:has(#stage.sequel-ending-street) {
+  /* The curb is at x=281.95. Match the 61-unit sidewalk on the left. */
+  --street-sidewalk-start: calc(50% + var(--game-width) / 2 - 1px);
+  --street-sidewalk-end: calc(50% + var(--game-width) * 192.95 / 300);
+  background: linear-gradient(90deg,
+    #76a44b var(--street-sidewalk-start),
+    #999999 var(--street-sidewalk-start) var(--street-sidewalk-end),
+    #76a44b var(--street-sidewalk-end));
+}

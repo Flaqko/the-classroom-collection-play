@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Classroom 2</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="collection.css">
+  <link rel="stylesheet" href="widescreen.css">
+  <link rel="stylesheet" href="sequel-title.css">
+  <script type="module" src="src/sequel.js"></script>
+</head>
+<body class="sequel-page">
+  <main class="classroom-layout">
+    <div id="game-wrap">
+      <svg id="stage" viewBox="0 0 300 400" role="application" aria-label="The Classroom 2 game" tabindex="0"></svg>
+      <section id="sequel-title" class="sequel-title" aria-label="The Classroom 2 title menu" hidden>
+        <svg class="sequel-title-logo" viewBox="0 0 280 106" role="img" aria-label="The Classroom 2">
+          <image href="assets/classroom-2/logo-peace-sign.png" x="0" y="4" width="247" height="99"/>
+          <path d="M235 44 Q249 26 262 28 Q275 30 272 41 Q270 52 247 67 L231 81 Q249 76 270 76"
+                fill="none" stroke="#0d0807" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M235 44 Q249 26 262 28 Q275 30 272 41 Q270 52 247 67 L231 81 Q249 76 270 76"
+                fill="none" stroke="#fa1210" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="sequel-title-options">
+          <button type="button" data-route="116" aria-label="Play"><svg aria-hidden="true"><use href="assets/classroom-2/title-labels.svg#play"/></svg></button>
+          <button type="button" data-resume-menu aria-label="Continue" aria-describedby="resume-classroom" hidden><svg aria-hidden="true"><use href="assets/classroom-2/title-labels.svg#continue"/></svg><span id="resume-classroom" class="resume-act" role="tooltip"></span></button>
+          <button type="button" data-route="120" aria-label="Instructions"><svg aria-hidden="true"><use href="assets/classroom-2/title-labels.svg#instructions"/></svg></button>
+          <button type="button" data-route="124" aria-label="Special features"><svg aria-hidden="true"><use href="assets/classroom-2/title-labels.svg#features"/></svg></button>
+          <button type="button" data-route="132" aria-label="Credits"><svg aria-hidden="true"><use href="assets/classroom-2/title-labels.svg#credits"/></svg></button>
+          <button type="button" data-route="136" aria-label="Passwords"><svg aria-hidden="true"><use href="assets/classroom-2/title-labels.svg#password"/></svg></button>
+          <button type="button" data-route="collection-back" aria-label="Back"><svg aria-hidden="true"><use href="assets/classroom-2/title-labels.svg#back"/></svg></button>
+        </div>
+      </section>
+      <section id="password-list" aria-labelledby="sequel-password-heading" hidden>
+        <h2 id="sequel-password-heading">Passwords</h2>
+        <ol></ol>
+        <form>
+          <input aria-label="Level password" placeholder="Enter password" autocomplete="off">
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+      <button id="pause-game" type="button" hidden>Pause</button>
+      <button id="fullscreen" type="button" hidden>Fullscreen</button>
+      <p class="game-status" id="sequel-status" role="status">Loading The Classroom 2…</p>
+    </div>
+    <button id="send-melanie" type="button" aria-keyshortcuts="Space Enter" hidden>Send in Melanie <span><kbd>Space</kbd> / <kbd>Enter</kbd> / <kbd>Xbox A</kbd></span></button>
+  </main>
+  <script type="module" src="src/widescreen.js"></script>
+</body>
+</html>

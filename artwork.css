@@ -1,0 +1,14 @@
+:root { color-scheme: dark; font-family: Arial, sans-serif; background: #171a1e; color: #f5eee2; }
+body { margin: 0; }
+main { width: min(940px, 92vw); margin: 28px auto 56px; }
+a { color: #ffca72; }
+p { max-width: 65ch; line-height: 1.5; }
+h2 { margin-top: 36px; }
+section { margin-block: 22px 32px; }
+.art-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 300px)); gap: 12px; }
+.art-logo, .art-vision { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+figure { margin: 0; overflow: hidden; border-radius: 8px; background: #272a2e; }
+img { width: 100%; display: block; }
+.art-logo img { background: #f90; aspect-ratio: 252 / 101; object-fit: contain; }
+figcaption { padding: 10px; font-size: 14px; line-height: 1.35; }
+@media (max-width: 540px) { .art-logo, .art-vision { grid-template-columns: minmax(0, 300px); } }

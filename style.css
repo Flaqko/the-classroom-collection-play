@@ -1,0 +1,102 @@
+:root{font-family:Arial,Helvetica,sans-serif;color:#f5eee2;background:#171a1e;color-scheme:dark}*{box-sizing:border-box}body{margin:0;text-align:center}header{display:flex;align-items:center;justify-content:space-between;max-width:760px;margin:auto;padding:16px 20px}h1{margin:0;font-size:19px;font-weight:600}h1 span{font-size:12px;font-weight:400;color:#afb5bd;margin-left:10px}header p{color:#cbb68c;font-size:12px;margin:0}main{display:flex;flex-direction:column;align-items:center}#game-wrap{position:relative;width:min(540px,90vw,calc((100dvh - 230px)*.75));min-width:240px;aspect-ratio:3/4;box-shadow:0 12px 45px #0008;background:#f90;overflow:hidden}#stage{display:block;width:100%;height:100%;outline:none;touch-action:none;user-select:none}#stage use{pointer-events:none}.source-button{cursor:pointer;outline:none}.source-button:focus-visible{filter:brightness(1.4)}#loading,#boundary,#paused{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:28px;background:#171a1ef5;line-height:1.6}#boundary h2{font-size:22px;color:#ffbc44}#boundary button{margin:6px}#paused{background:#171a1ebb;pointer-events:none;font-size:16px}[hidden]{display:none!important}#status{margin:14px 12px 8px;color:#e3c99f;font-size:12px;min-height:15px}.utilities{display:flex;gap:12px}button{font:inherit;font-size:12px;border:1px solid #59616a;border-radius:4px;background:#282e35;padding:7px 15px;color:#fff;cursor:pointer}button:hover{background:#3b444e}.controls{font-size:12px;color:#adb3bc;line-height:1.6;margin:10px 12px}footer{font-size:11px;color:#878e98;padding:0 12px 15px}@media(max-width:500px){header{padding:12px}header h1 span{display:block;margin:3px 0 0}#game-wrap{width:min(94vw,calc((100dvh - 220px)*.75))}}
+
+#password-list {
+  position: absolute;
+  inset: 27% 8% 11%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 2cqw;
+  padding: 3cqw;
+  background: #fc0;
+  border: 1.5cqw solid #f60;
+  border-radius: 9cqw;
+  color: #111;
+}
+#game-wrap { container-type: inline-size; }
+#password-list h2 {
+  margin: 0;
+  font: 900 8cqw/1 "Arial Black", Arial, sans-serif;
+  text-transform: uppercase;
+}
+#password-list ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2cqw 3cqw;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#password-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1cqw;
+  font: 700 4.3cqw/1.2 Arial, sans-serif;
+}
+#password-list .password-choice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1cqw;
+  width: 100%;
+  padding: .4cqw;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+}
+#password-list .password-choice:is(:hover, :focus-visible) {
+  background: var(--title-hover, #ffe275);
+}
+#password-list .password-choice:focus-visible {
+  outline: 2px solid var(--title-focus, #512700);
+  outline-offset: -2px;
+}
+#password-list code { font-size: inherit; }
+#password-list form { display: flex; gap: 2cqw; }
+#password-list input, #password-list button {
+  font: 700 4.6cqw/1.2 Arial, sans-serif;
+  padding: 1.8cqw;
+  border: 0;
+  border-radius: 1.5cqw;
+}
+#password-list input {
+  flex: 1;
+  min-width: 0;
+  background: #fff2b5;
+  color: #111;
+}
+#password-list button { background: #f60; color: #111; }
+#password-list button:hover { background: #ff8533; }
+.collection-link { align-self: center; color: #ffcf86; font-size: 12px; }
+
+.pause-menu {
+  width: min(18rem, 85vw);
+  padding: 1.25rem;
+  border: 4px solid #f60;
+  border-radius: 1.5rem;
+  background: #fc0;
+  color: #191200;
+}
+.pause-menu::backdrop { background: #101010a8; }
+.pause-menu h2 {
+  margin: 0 0 .75rem;
+  font: 900 1.65rem/1.1 Arial, sans-serif;
+  text-transform: uppercase;
+}
+.pause-menu button {
+  display: block;
+  width: 100%;
+  padding: .55rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.pause-menu button:hover,
+.pause-menu button:focus-visible {
+  background: #f90;
+  outline: 2px solid #191200;
+  outline-offset: -2px;
+}

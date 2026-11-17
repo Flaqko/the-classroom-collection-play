@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Classroom</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="widescreen.css">
+</head>
+<body>
+  <main class="classroom-layout">
+    <div id="game-wrap">
+      <svg id="stage" viewBox="0 0 300 400" role="application" aria-label="The Classroom game" tabindex="0">
+        <defs>
+          <filter id="detection-tint" color-interpolation-filters="sRGB">
+            <feColorMatrix id="detection-color" type="matrix"/>
+          </filter>
+        </defs>
+      </svg>
+      <svg id="vertical-cheat-bar" viewBox="0 0 300 400" aria-hidden="true" hidden>
+        <g transform="translate(318 243.45) scale(.60391235 .8790741)" opacity=".8">
+          <path d="M2.5-153.4 8.45-153.55Q11-151.75 11-146.95V137.7Q11 142.35 8.45 144.9 5.95 147.45 2.5 146.35-.9 145.25-3.25 141.3-5.65 137.4-5.6 132.95V-137.9Q-5.6-142.45-3.3-146.9-.9-151.45 2.5-153.4Z" fill="#66cc00" fill-opacity=".302"/>
+          <path id="vertical-cheat-fill" d="M2.5-144.2Q5.95-146.2 8.45-144.4 11-142.6 11-138V138Q11 142.55 8.45 145 5.95 147.45 2.5 146.4-.9 145.35-3.25 141.5-5.65 137.7-5.6 133.45V-129.2Q-5.6-133.6-3.3-137.95-.9-142.35 2.5-144.2Z" fill="#f00" transform="translate(0 142.35) scale(1 .029815674)"/>
+        </g>
+        <g id="classroom-notifiers"></g>
+      </svg>
+      <svg id="note-pencil" viewBox="0 0 300 400" aria-hidden="true" hidden></svg>
+      <section id="loading"><p>Loading the original classroom…</p></section>
+      <section id="paused" hidden>Paused · click the game to resume</section>
+      <section id="password-list" aria-labelledby="password-list-heading" hidden>
+        <h2 id="password-list-heading">Passwords</h2>
+        <ol></ol>
+        <form>
+          <input id="password-input" aria-label="Level password" placeholder="Enter password" autocomplete="off" maxlength="24">
+          <button type="submit" aria-label="Submit password">Submit</button>
+        </form>
+      </section>
+      <button id="pause-game" type="button" hidden>Pause</button>
+      <button id="sound" type="button" aria-pressed="false">Sound: on</button>
+      <button id="fullscreen" type="button" hidden>Fullscreen</button>
+      <p class="game-status" id="status" aria-live="polite">Original game by Luksy.</p>
+      <label class="game-status" id="detection-status" hidden>Detection
+        <progress id="detection-meter" value="0"></progress>
+      </label>
+    </div>
+  </main>
+  <script type="module" src="src/main.js"></script>
+  <script type="module" src="src/widescreen.js"></script>
+</body>
+</html>
