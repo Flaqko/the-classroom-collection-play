@@ -310,3 +310,22 @@
 :is(.sequel-page, .classroom-three) [data-gamepad-navigation] .sequel-title-options button:focus svg {
   filter: brightness(0);
 }
+
+/* Draw the scrolling hallway and its shadows in one SVG viewport. */
+.classroom-three .classroom-layout:has(#stage[data-frame="103"]) #game-wrap {
+  width: 100%;
+  height: var(--frame-height);
+}
+
+.classroom-three .classroom-layout:has(#stage[data-frame="103"])
+  :is(.scene-edges, .classroom-three-room-edge) {
+  display: none;
+}
+
+.classroom-three .classroom-layout:has(#stage[data-frame="103"]) .classroom-side-fades {
+  clip-path: none;
+}
+
+.classroom-three #stage[data-frame="103"] [data-name="faderMan2"] {
+  visibility: hidden;
+}
