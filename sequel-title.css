@@ -322,10 +322,11 @@
   display: none;
 }
 
-.classroom-three .classroom-layout:has(#stage[data-frame="103"]) .classroom-side-fades {
+.classroom-three .classroom-layout:has(#stage:is([data-frame="103"], [data-frame="154"])) .classroom-side-fades {
   clip-path: none;
 }
 
-.classroom-three #stage[data-frame="103"] [data-name="faderMan2"] {
+.classroom-three #stage[data-frame="103"] [data-name="faderMan2"],
+.classroom-three #stage[data-frame="154"] [data-symbol="482"] [data-symbol="9"] {
   visibility: hidden;
 }
