@@ -10,7 +10,8 @@ export function setupGamepad({surface, movement, canMove, pauseMenu, goBack, adv
   if (!navigator.getGamepads) return;
   let confirmHeld;
   let backHeld;
-  let startHeld;
+  let startHeld = false;
+  const touchScreen = navigator.maxTouchPoints > 0;
   let navigation = 0;
   let nextNavigation = 0;
 
@@ -28,7 +29,9 @@ export function setupGamepad({surface, movement, canMove, pauseMenu, goBack, adv
   function poll(now) {
     let pad;
     try {
-      pad = navigator.getGamepads().find(device => device?.mapping === 'standard');
+      const pads = navigator.getGamepads();
+      pad = pads.find(device => device?.mapping === 'standard') ??
+        pads.find(device => device && !device.mapping && /xbox/i.test(device.id) && device.buttons.length >= 16);
     } catch (error) {
       if (error.name !== 'SecurityError') throw error;
       movement?.setGamepad();
@@ -43,7 +46,7 @@ export function setupGamepad({surface, movement, canMove, pauseMenu, goBack, adv
     const right = pressed(15) || pad?.axes[0] > deadZone;
     const up = pressed(12) || pad?.axes[1] < -deadZone;
     const down = pressed(13) || pad?.axes[1] > deadZone;
-    const active = Boolean(pad) && !document.hidden && document.hasFocus();
+    const active = Boolean(pad) && !document.hidden && (document.hasFocus() || touchScreen);
     const handledBack = active && back && backHeld === false &&
       (pauseMenu?.paused || goBack?.());
     if (handledBack) {
