@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The Classroom 3</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=password-select">
   <link rel="stylesheet" href="collection.css">
   <link rel="stylesheet" href="widescreen.css">
-  <link rel="stylesheet" href="sequel-title.css">
-  <script type="module" src="src/classroom-3.js?v=full-screen-fades"></script>
+  <link rel="stylesheet" href="sequel-title.css?v=password-select">
+  <script type="module" src="src/classroom-3.js?v=password-select"></script>
 </head>
 <body class="classroom-three">
   <main class="classroom-layout">
@@ -35,7 +35,7 @@
         <h2 id="password-heading">Passwords</h2>
         <ol></ol>
         <form>
-          <input aria-label="Level password" placeholder="Enter password" autocomplete="off" spellcheck="false">
+          <input type="hidden" name="password">
           <button type="submit">Go</button>
         </form>
         <button type="button" id="close-passwords">Back</button>

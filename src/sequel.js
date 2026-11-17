@@ -4,7 +4,7 @@ import {setupSideFades} from './side-fades.js';
 import {setupCreditsSkip} from './credits-skip.js';
 import {runFrameClock} from './frame-clock.js';
 import {setupSceneEdges} from './scene-edges.js';
-import {populatePasswords} from './password-list.js';
+import {populatePasswords, resetPasswordSelection} from './password-list.js?v=password-select';
 import {setupPauseMenu} from './pause-menu.js';
 import {setupAutosave} from './autosave.js';
 import {setupRemaster} from './remaster.js';
@@ -164,8 +164,7 @@ async function loadGame() {
     flushEvents();
     if (usesTitleMusic && !keepTitleMusic) audio.playLoop(2, .22, 10.02);
     if (frame === 254) {
-      passwordInput.value = '';
-      passwordInput.focus({preventScroll: true});
+      resetPasswordSelection(passwordPanel);
     } else stage.focus({preventScroll: true});
   }
 
@@ -473,7 +472,7 @@ async function loadGame() {
     event.preventDefault();
     const entry = data.passwords.find(item => item.word === passwordInput.value.trim().toLowerCase());
     if (entry) enter(entry.frame, true);
-    else status.textContent = 'Password not recognized.';
+    else status.textContent = 'Select a password first.';
   });
   if (!autosave.resumeFromLink()) enter(title);
   setupGamepad({

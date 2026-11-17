@@ -44,7 +44,7 @@
   color: inherit;
   background: transparent;
 }
-#password-list .password-choice:is(:hover, :focus-visible) {
+#password-list .password-choice:is(:hover, :focus-visible, [aria-pressed=true]) {
   background: var(--title-hover, #ffe275);
 }
 #password-list .password-choice:focus-visible {
@@ -52,18 +52,12 @@
   outline-offset: -2px;
 }
 #password-list code { font-size: inherit; }
-#password-list form { display: flex; gap: 2cqw; }
-#password-list input, #password-list button {
+#password-list form { display: flex; justify-content: center; gap: 2cqw; }
+#password-list button {
   font: 700 4.6cqw/1.2 Arial, sans-serif;
   padding: 1.8cqw;
   border: 0;
   border-radius: 1.5cqw;
-}
-#password-list input {
-  flex: 1;
-  min-width: 0;
-  background: #fff2b5;
-  color: #111;
 }
 #password-list button { background: #f60; color: #111; }
 #password-list button:hover { background: #ff8533; }

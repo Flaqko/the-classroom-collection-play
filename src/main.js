@@ -3,7 +3,7 @@ import {createMovementInput} from './movement-input.js';
 import {setupCreditsSkip} from './credits-skip.js';
 import {createFrameCounter} from './frame-counter.js';
 import {setupSceneEdges} from './scene-edges.js';
-import {populatePasswords} from './password-list.js';
+import {populatePasswords, resetPasswordSelection} from './password-list.js?v=password-select';
 import {setupPauseMenu} from './pause-menu.js';
 import {setupAutosave} from './autosave.js';
 import {setupRemaster} from './remaster.js';
@@ -29,7 +29,7 @@ const speechArtwork = [
 ];
 const syncSceneEdges = setupSceneEdges(stage, [159], speechArtwork);
 const passwordList = document.querySelector('#password-list');
-const passwordField = document.querySelector('#password-input');
+const passwordField = passwordList.querySelector('input');
 const collectionBack = "collection-back";
 const menuContinue = "menu-continue";
 const fixedLabels={[menuContinue]:"Continue",[collectionBack]:"Back",121:'Start game',126:'Instructions',130:'Credits',135:'Password',151:'Next',178:'Next',157:'Back',191:'Back to menu',194:'Back to menu',250:'Back to menu'};
@@ -167,8 +167,7 @@ function show(f){
  else if(f===264){
   setScreen('password');
   status.textContent='';
-  passwordField.value = '';
-  passwordField.focus({preventScroll: true});
+  resetPasswordSelection(passwordList);
  }
  else if(route){
   setScreen(route.phase);
@@ -183,7 +182,7 @@ function show(f){
  syncSceneEdges();
  accumulator=0;if(f!==264)stage.focus({preventScroll:true});sounds();
 }
-function submitPassword(){const target=levelForPassword(data.levels,passwordField.value);if(target)show(target.note);else status.textContent='Password not recognized.';}
+function submitPassword(){const target=levelForPassword(data.levels,passwordField.value);if(target)show(target.note);else status.textContent='Select a password first.';}
 setupCreditsSkip(stage, () => screen === 'credits', () => show(data.opening.title));
 passwordList.querySelector('form').addEventListener('submit', event => {
  event.preventDefault();

@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The Classroom 2</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=password-select">
   <link rel="stylesheet" href="collection.css">
   <link rel="stylesheet" href="widescreen.css">
-  <link rel="stylesheet" href="sequel-title.css">
-  <script type="module" src="src/sequel.js"></script>
+  <link rel="stylesheet" href="sequel-title.css?v=password-select">
+  <script type="module" src="src/sequel.js?v=password-select"></script>
 </head>
 <body class="sequel-page">
   <main class="classroom-layout">
@@ -36,7 +36,7 @@
         <h2 id="sequel-password-heading">Passwords</h2>
         <ol></ol>
         <form>
-          <input aria-label="Level password" placeholder="Enter password" autocomplete="off">
+          <input type="hidden" name="password">
           <button type="submit">Submit</button>
         </form>
       </section>

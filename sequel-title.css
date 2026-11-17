@@ -104,7 +104,6 @@
   background: var(--title-hover);
 }
 :is(.sequel-page, .classroom-three) .sequel-title-options button:focus-visible { outline-color: var(--title-focus); }
-:is(.sequel-page, .classroom-three) #password-list input { background: var(--title-input); }
 :is(.sequel-page, .classroom-three) #password-list button:not(.password-choice) { background: var(--title-action); }
 :is(.sequel-page, .classroom-three) #password-list button:not(.password-choice):hover { background: var(--title-action-hover); }
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The Classroom</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=password-select">
   <link rel="stylesheet" href="widescreen.css">
 </head>
 <body>
@@ -31,7 +31,7 @@
         <h2 id="password-list-heading">Passwords</h2>
         <ol></ol>
         <form>
-          <input id="password-input" aria-label="Level password" placeholder="Enter password" autocomplete="off" maxlength="24">
+          <input type="hidden" name="password">
           <button type="submit" aria-label="Submit password">Submit</button>
         </form>
       </section>
@@ -44,7 +44,7 @@
       </label>
     </div>
   </main>
-  <script type="module" src="src/main.js"></script>
+  <script type="module" src="src/main.js?v=password-select"></script>
   <script type="module" src="src/widescreen.js"></script>
 </body>
 </html>

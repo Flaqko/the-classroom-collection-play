@@ -4,7 +4,7 @@ import {setupSideFades} from './side-fades.js';
 import {setupCreditsSkip} from './credits-skip.js';
 import {runFrameClock} from './frame-clock.js';
 import {setupSceneEdges} from './scene-edges.js';
-import {populatePasswords} from './password-list.js';
+import {populatePasswords, resetPasswordSelection} from './password-list.js?v=password-select';
 import {classroomThreeCreditsLoop, janitorHallMusicLoop} from './classroom-3-music.js';
 import {chapterLettering, setupClassroomThreeRoomEdges, setupHallwayBackdrop, themeClassroomThree} from './classroom-3-theme.js';
 import {setupPauseMenu} from './pause-menu.js';
@@ -463,8 +463,7 @@ async function loadGame() {
       case 'password_button':
         passwords.hidden = false;
         titleMenu.inert = true;
-        passwordInput.value = '';
-        passwordInput.focus();
+        resetPasswordSelection(passwords);
         break;
     }
   }
@@ -650,8 +649,7 @@ async function loadGame() {
     const entry = data.passwords.find(candidate => candidate.word === word);
     if (entry) enter(entry.frame);
     else {
-      status.textContent = 'Password not recognized.';
-      passwordInput.select();
+      status.textContent = 'Select a password first.';
     }
   });
 
