@@ -443,7 +443,7 @@ async function loadGame() {
     audio.unlock();
     switch (name) {
       case 'collectionBack':
-        window.location.assign('collection.html');
+        window.location.assign('collection.html?v=shared-fullscreen');
         break;
       case 'creditsButton':
         enter(credits);

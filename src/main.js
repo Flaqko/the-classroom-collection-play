@@ -190,7 +190,7 @@ passwordList.querySelector('form').addEventListener('submit', event => {
 });
 function button(id){
  if(id===menuContinue){autosave.continueGame();return;}
- if(id===collectionBack){window.location.assign("collection.html");return;}
+ if(id===collectionBack){window.location.assign("collection.html?v=shared-fullscreen");return;}
  const action=data.buttons[id];if(!action)return;
  if(action.relative){show(frame+action.relative);return;}
  show(action.target);

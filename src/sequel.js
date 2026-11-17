@@ -114,7 +114,7 @@ async function loadGame() {
 
   function navigate(id) {
     if (id === collectionBack) {
-      window.location.assign('collection.html');
+      window.location.assign('collection.html?v=shared-fullscreen');
       return;
     }
     const route = data.buttons[id];

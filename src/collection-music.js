@@ -1,4 +1,5 @@
 import {setupGamepad} from './gamepad.js?v=controller-highlight';
+import {fullscreenDocument, toggleFullscreen, watchFullscreen} from './fullscreen.js';
 import {OriginalAudio} from './audio.js';
 import {classroomThreeCreditsLoop} from './classroom-3-music.js';
 
@@ -49,16 +50,13 @@ sound.addEventListener('click', () => {
 });
 updateSound();
 
-document.addEventListener('fullscreenchange', () => {
-  fullscreen.textContent = document.fullscreenElement ? 'Exit fullscreen' : 'Fullscreen';
-});
+watchFullscreen(fullscreen);
 fullscreen.addEventListener('click', async () => {
   try {
-    if (document.fullscreenElement) await document.exitFullscreen();
-    else await document.documentElement.requestFullscreen();
+    await toggleFullscreen();
     status.hidden = true;
   } catch {
-    status.textContent = document.fullscreenEnabled
+    status.textContent = fullscreenDocument.fullscreenEnabled
       ? 'Tap or click Fullscreen to switch modes.'
       : 'Fullscreen is unavailable in this browser.';
     status.hidden = false;
@@ -72,8 +70,8 @@ exit.addEventListener('click', () => {
   settingsButton.hidden = true;
   exitScreen.hidden = false;
   returnButton.focus();
-  if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
-  window.close();
+  if (fullscreenDocument.fullscreenElement) fullscreenDocument.exitFullscreen().catch(() => {});
+  fullscreenDocument.defaultView.close();
 });
 returnButton.addEventListener('click', () => {
   exitScreen.hidden = true;
