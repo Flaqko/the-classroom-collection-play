@@ -110,7 +110,8 @@ async function loadGame() {
   themeClassroomThree(renderer.defs);
   const prepareJanitorHall = setupHallwayBackdrop(renderer, 175, 'janitor-hall.png', [-630, -838, 1317, 1651]);
   const prepareGeekHall = setupHallwayBackdrop(renderer, 196, 'geek-hall.png', [-630, -405, 1317, 1178]);
-  const syncSideFades = setupSideFades(stage, [8, 80, 82, 85, 86, 87]);
+  const syncSideFades = setupSideFades(stage, [8, 80, 82, 85, 86, 87],
+    use => !use.closest('[data-symbol="508"]'));
   const syncRoomEdges = setupClassroomThreeRoomEdges(stage);
   const characterArtwork = [124, 129, 131, 159, 198, 199, 200, 201, 208, 209, 211, 267, 272, 285, 303, 305, 334];
   // Some source lines draw the bubble and lettering as separate symbols.

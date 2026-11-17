@@ -312,21 +312,29 @@
 }
 
 /* Draw the scrolling hallway and its shadows in one SVG viewport. */
-.classroom-three .classroom-layout:has(#stage[data-frame="103"]) #game-wrap {
+.classroom-three .classroom-layout:has(#stage:is([data-frame="62"], [data-frame="103"])) #game-wrap {
   width: 100%;
   height: var(--frame-height);
 }
 
-.classroom-three .classroom-layout:has(#stage[data-frame="103"])
+.classroom-three .classroom-layout:has(#stage:is([data-frame="62"], [data-frame="103"]))
   :is(.scene-edges, .classroom-three-room-edge) {
   display: none;
 }
 
-.classroom-three .classroom-layout:has(#stage:is([data-frame="103"], [data-frame="154"])) .classroom-side-fades {
+/* Use one continuous fade across the playfield and its widescreen margins. */
+.classroom-three .classroom-side-fades {
   clip-path: none;
 }
 
-.classroom-three #stage[data-frame="103"] [data-name="faderMan2"],
-.classroom-three #stage[data-frame="154"] [data-symbol="482"] [data-symbol="9"] {
+.classroom-three #stage :is(
+  [data-symbol="8"], [data-symbol="80"], [data-symbol="82"],
+  [data-symbol="85"], [data-symbol="86"], [data-symbol="87"]
+) {
   visibility: hidden;
+}
+
+/* The credits' solid backdrop sits behind the scrolling text. */
+.classroom-three .classroom-layout:has(#stage[data-frame="174"]) {
+  background: #192d32;
 }
