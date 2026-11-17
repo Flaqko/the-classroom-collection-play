@@ -1,4 +1,4 @@
-import {setupGamepad, advanceWithSpace} from './gamepad.js';
+import {setupGamepad, advanceWithSpace} from './gamepad.js?v=controller-highlight';
 import {createMovementInput} from './movement-input.js';
 import {setupSideFades} from './side-fades.js';
 import {setupCreditsSkip} from './credits-skip.js';

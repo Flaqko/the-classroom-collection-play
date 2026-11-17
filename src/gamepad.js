@@ -16,6 +16,9 @@ export function setupGamepad({surface, movement, canMove, pauseMenu, goBack, adv
   let nextNavigation = 0;
 
   surface.addEventListener('pointerdown', () => delete surface.dataset.gamepadNavigation, {capture: true});
+  window.addEventListener('keydown', event => {
+    if (event.isTrusted) delete surface.dataset.gamepadNavigation;
+  }, {capture: true});
 
   function controls() {
     const scope = pauseMenu?.paused ? surface.querySelector('dialog[open]') : surface;
@@ -50,9 +53,11 @@ export function setupGamepad({surface, movement, canMove, pauseMenu, goBack, adv
     const handledBack = active && back && backHeld === false &&
       (pauseMenu?.paused || goBack?.());
     if (handledBack) {
+      surface.dataset.gamepadNavigation = '';
       unlock?.();
       if (pauseMenu?.paused) pauseMenu.toggle();
     } else if (active && start && startHeld === false && pauseMenu) {
+      surface.dataset.gamepadNavigation = '';
       unlock?.();
       const submitPassword = surface.querySelector('#password-list:not([hidden]) button[type=submit]');
       if (submitPassword && !pauseMenu.paused) submitPassword.click();
@@ -77,6 +82,7 @@ export function setupGamepad({surface, movement, canMove, pauseMenu, goBack, adv
     }
 
     if (active && confirm && confirmHeld === false && !start && !handledBack) {
+      surface.dataset.gamepadNavigation = '';
       unlock?.();
       const options = controls();
       const focused = options.find(control => control === document.activeElement);

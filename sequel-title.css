@@ -300,3 +300,13 @@
     #999999 var(--street-sidewalk-start) var(--street-sidewalk-end),
     #76a44b var(--street-sidewalk-end));
 }
+
+[data-gamepad-navigation] .sequel-title-options button:focus,
+[data-gamepad-navigation] .pause-menu button:focus {
+  background: var(--title-action, #fff0ac);
+  color: #211707;
+}
+
+:is(.sequel-page, .classroom-three) [data-gamepad-navigation] .sequel-title-options button:focus svg {
+  filter: brightness(0);
+}

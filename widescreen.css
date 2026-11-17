@@ -164,7 +164,26 @@ body[data-screen="day"] .classroom-layout #game-wrap { overflow: visible; }
   pointer-events: none;
 }
 
+/* Controller focus uses a filled highlight instead of the keyboard focus ring. */
 [data-gamepad-navigation] :is(button, a[href], [role="button"]):focus {
-  outline: 2px solid #fff;
-  outline-offset: -2px;
+  outline: none !important;
+}
+
+[data-gamepad-navigation] :is(button, a[href]):focus {
+  background: var(--title-action, #fff0ac);
+  color: #211707;
+}
+
+[data-gamepad-navigation] #password-list .password-choice:focus,
+[data-gamepad-navigation] #password-list button[type="submit"]:focus {
+  background: var(--title-action, #fff0ac);
+  color: #211707;
+}
+
+[data-gamepad-navigation] svg [role="button"]:focus {
+  filter: drop-shadow(0 0 1px #ffdd79) drop-shadow(0 0 2px #ffdd79);
+}
+
+body[data-screen="title"] [data-gamepad-navigation] svg [role="button"]:focus {
+  filter: brightness(0) saturate(100%) invert(24%) sepia(94%) saturate(1800%) hue-rotate(357deg);
 }

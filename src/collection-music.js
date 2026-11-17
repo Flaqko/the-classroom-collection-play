@@ -1,4 +1,4 @@
-import {setupGamepad} from './gamepad.js?v=mobile-start';
+import {setupGamepad} from './gamepad.js?v=controller-highlight';
 import {OriginalAudio} from './audio.js';
 import {classroomThreeCreditsLoop} from './classroom-3-music.js';
 
