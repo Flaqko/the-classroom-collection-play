@@ -17,6 +17,18 @@
         <a href="classroom-3.html">The Classroom 3</a>
       </nav>
     </div>
+    <button type="button" class="collection-settings-trigger" aria-haspopup="dialog">Settings</button>
+    <dialog class="collection-settings" aria-labelledby="collection-settings-heading">
+      <h2 id="collection-settings-heading">Settings</h2>
+      <button type="button" data-setting="fullscreen" autofocus>Fullscreen</button>
+      <button type="button" data-setting="sound" aria-pressed="false">Sound off</button>
+      <button type="button" data-setting="exit">Exit game</button>
+      <p role="status" hidden></p>
+    </dialog>
+    <section class="collection-exit" hidden>
+      <p>You can close this tab.</p>
+      <button type="button">Return to collection</button>
+    </section>
   </main>
   <script type="module" src="src/collection-music.js"></script>
 </body>

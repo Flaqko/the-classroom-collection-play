@@ -82,3 +82,40 @@ body { margin: 0; }
 .classroom-three .classroom-layout:has(#stage:is([data-frame="49"], [data-frame="62"], [data-frame="71"])) .classroom-three-room-edge use {
   filter: sepia(.38) hue-rotate(135deg) saturate(1.65);
 }
+
+.collection-frame { position: relative; }
+.collection-frame [hidden] { display: none; }
+
+.collection-settings-trigger {
+  position: absolute;
+  inset: .6rem .6rem auto auto;
+}
+
+.collection-frame button {
+  border: 2px solid #f60;
+  border-radius: .5rem;
+  padding: .4rem .7rem;
+  background: #fc0;
+  color: #18130a;
+  font: 700 1rem Arial, sans-serif;
+  cursor: pointer;
+}
+
+.collection-frame button:hover,
+.collection-frame button:focus-visible { background: #ffe16d; }
+
+.collection-settings {
+  width: min(12rem, 76vw);
+  padding: 1rem;
+  border: 3px solid #f60;
+  border-radius: .8rem;
+  background: #f90;
+  color: #18130a;
+  text-align: center;
+}
+
+.collection-settings::backdrop { background: #171a1eaa; }
+.collection-settings h2 { margin: 0 0 .7rem; font-size: 1.2rem; }
+.collection-settings button { display: block; width: 100%; margin-block: .35rem; }
+.collection-settings p { margin: .65rem 0 0; font-size: .85rem; }
+.collection-exit { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }

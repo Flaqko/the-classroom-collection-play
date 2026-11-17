@@ -1,6 +1,11 @@
+function readCollectionMute() {
+ try { return localStorage.getItem('classroom.sound-muted') === 'true'; }
+ catch { return false; }
+}
+
 // Original Flash sound events with independent voices and stereo envelopes.
 export class OriginalAudio {
- constructor(metadata, directory='assets/audio/'){this.metadata=metadata;this.directory=directory;this.tracks=new Map();this.active=new Set();this.voiceId=0;this.muted=false;this.paused=false;this.loopBuffers=new Map();}
+ constructor(metadata, directory='assets/audio/'){this.metadata=metadata;this.directory=directory;this.tracks=new Map();this.active=new Set();this.voiceId=0;this.muted=readCollectionMute();this.paused=false;this.loopBuffers=new Map();}
  wire(track){
   if(track.wired||!this.context)return;track.element.muted=false;
   const source=this.context.createMediaElementSource(track.element),split=this.context.createChannelSplitter(2),merge=this.context.createChannelMerger(2);

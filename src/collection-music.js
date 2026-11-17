@@ -14,4 +14,77 @@ document.addEventListener('visibilitychange', () => {
 if (document.hidden) audio.pause();
 audio.playLoop(...classroomThreeCreditsLoop);
 
-setupGamepad({surface: document.querySelector('.collection-frame'), unlock: () => audio.unlock()});
+const surface = document.querySelector('.collection-frame');
+const selection = surface.querySelector('.collection');
+const settings = surface.querySelector('.collection-settings');
+const settingsButton = surface.querySelector('.collection-settings-trigger');
+const exitScreen = surface.querySelector('.collection-exit');
+const returnButton = exitScreen.querySelector('button');
+const fullscreen = settings.querySelector('[data-setting=fullscreen]');
+const sound = settings.querySelector('[data-setting=sound]');
+const exit = settings.querySelector('[data-setting=exit]');
+const status = settings.querySelector('[role=status]');
+
+function toggleSettings() {
+  if (!exitScreen.hidden) return;
+  if (settings.open) {
+    settings.close();
+  } else {
+    status.hidden = true;
+    settings.showModal();
+  }
+}
+
+function updateSound() {
+  sound.textContent = audio.muted ? 'Sound on' : 'Sound off';
+  sound.setAttribute('aria-pressed', String(audio.muted));
+}
+
+settingsButton.addEventListener('click', toggleSettings);
+sound.addEventListener('click', () => {
+  audio.mute(!audio.muted);
+  try { localStorage.setItem('classroom.sound-muted', String(audio.muted)); }
+  catch { /* Sound still changes for the current page. */ }
+  updateSound();
+});
+updateSound();
+
+document.addEventListener('fullscreenchange', () => {
+  fullscreen.textContent = document.fullscreenElement ? 'Exit fullscreen' : 'Fullscreen';
+});
+fullscreen.addEventListener('click', async () => {
+  try {
+    if (document.fullscreenElement) await document.exitFullscreen();
+    else await document.documentElement.requestFullscreen();
+    status.hidden = true;
+  } catch {
+    status.textContent = document.fullscreenEnabled
+      ? 'Tap or click Fullscreen to switch modes.'
+      : 'Fullscreen is unavailable in this browser.';
+    status.hidden = false;
+  }
+});
+
+exit.addEventListener('click', () => {
+  settings.close();
+  audio.stop();
+  selection.hidden = true;
+  settingsButton.hidden = true;
+  exitScreen.hidden = false;
+  returnButton.focus();
+  if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+  window.close();
+});
+returnButton.addEventListener('click', () => {
+  exitScreen.hidden = true;
+  selection.hidden = false;
+  settingsButton.hidden = false;
+  audio.playLoop(...classroomThreeCreditsLoop);
+  selection.querySelector('a').focus();
+});
+
+setupGamepad({
+  surface,
+  pauseMenu: {get paused() { return settings.open; }, toggle: toggleSettings},
+  unlock: () => audio.unlock(),
+});

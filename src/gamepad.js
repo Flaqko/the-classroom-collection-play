@@ -17,7 +17,7 @@ export function setupGamepad({surface, movement, canMove, pauseMenu, goBack, adv
   surface.addEventListener('pointerdown', () => delete surface.dataset.gamepadNavigation, {capture: true});
 
   function controls() {
-    const scope = pauseMenu?.paused ? surface.querySelector('.pause-menu[open]') : surface;
+    const scope = pauseMenu?.paused ? surface.querySelector('dialog[open]') : surface;
     return [...scope.querySelectorAll(controlSelector)].filter(control =>
       control.id !== 'pause-game' && !control.matches(':disabled') &&
       !control.closest('[hidden], [inert], [aria-hidden="true"]') &&

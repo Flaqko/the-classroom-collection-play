@@ -279,6 +279,10 @@ async function boot(){try{
   label: `Day ${day}`, password,
  })));
  audio=new OriginalAudio({...data.audio, 'copy-complete': {file: '../classroom-3/audio/53.mp3', stereo: false}});
+ muted = audio.muted;
+ const soundButton = document.querySelector('#sound');
+ soundButton.textContent = muted ? 'Sound: off' : 'Sound: on';
+ soundButton.setAttribute('aria-pressed', muted);
  renderer = new Renderer(stage, data, await libraryResponse.text(), label, button);
  await setupRemaster(renderer.defs, 'classic');
  // The yellow title panel also contains letter-shaped cutouts for the old button.
